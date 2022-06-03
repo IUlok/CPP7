@@ -1,4 +1,6 @@
 #include "header.h"
+#include <iostream>
+
 class CWhole
 {
     int Amount;

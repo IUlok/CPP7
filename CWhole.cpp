@@ -60,7 +60,7 @@ void CWhole::outputid(int id) //вывод по ключу
 {
     {
         for (int i = 0; i < Amount; i++)
-            if (m_p[i]->tryingKey(id))
+            if ((m_p[i]->tryingKey(id))==1)
                 id = i;
         int *arr = new int[16];
         m_p[id]->gm_M(arr);
