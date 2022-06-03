@@ -4,19 +4,19 @@ using namespace std;
 
 CWhole :: CWhole() // Конструктор
 {
-    kol = 0;
+    Amount = 0;
 }
 CWhole ::~CWhole() // Деструктор
 {
-    for (int i = 0; i < kol; i++)
+    for (int i = 0; i < Amount; i++)
         delete m_p[i];
 }
-void CWhole::add(int m[4], int key) // Метод добавления элемента
+void CWhole::add(int m[16], int key) // Метод добавления элемента
 {
     if (search(key) < 0)
     {
-        m_p[kol] = new Matrix(m,key);
-        kol++;
+        m_p[Amount] = new Matrix(m,key);
+        Amount++;
         cout<<"New element was added"<<endl;
     }
     else
@@ -24,8 +24,8 @@ void CWhole::add(int m[4], int key) // Метод добавления элем�
 }
 int CWhole::search(int id) // Метод поиск по ключу
 {
-    for (int i = 0; i < kol; i++)
-        if ((m_p[i]->chec(id))==1)
+    for (int i = 0; i < Amount; i++)
+        if ((m_p[i]->tryingKey(id))==1)
             return i;
     return -1;
 }
@@ -35,39 +35,51 @@ void CWhole::del(int id)  // Метод удаления матрицы по к�
     if (d >= 0)
     {
         delete m_p[d];
-        while (d < kol - 1)
+        while (d < Amount - 1)
         {
             m_p[d] = m_p[d + 1];
             d++;
         }
-        kol--;
+        Amount--;
     }
 }
-int CWhole::getn() // Метод получения количества элементов
+int CWhole::getAmount() // Метод получения количества элементов
 {
-    return kol;
+    return Amount;
 }
 void CWhole::output() // Метод для вывода матрицы
 {
-    for (int i=0; i < kol; i++)
+    for (int i=0; i < Amount; i++)
     {
         cout << "ID: " <<m_p[i]->gid() << endl;
     }
-    if(kol==0)
+    if(Amount==0)
         cout<<"There is not Matrix!"<<endl;
 }
 void CWhole::outputid(int id) //вывод по ключу
 {
     {
-        for (int i = 0; i < kol; i++)
-            if (m_p[i]->chec(id))
+        for (int i = 0; i < Amount; i++)
+            if (m_p[i]->tryingKey(id))
                 id = i;
-        int *arr = new int[4];
+        int *arr = new int[16];
         m_p[id]->gm_M(arr);
         cout <<  arr[0] << " ";
-        cout <<  arr[1] << endl;
+        cout <<  arr[1] << " ";
         cout <<  arr[2] << " ";
         cout  << arr[3] << endl;
+        cout <<  arr[4] << " ";
+        cout <<  arr[5] << " ";
+        cout <<  arr[6] << " ";
+        cout  << arr[7] << endl;
+        cout <<  arr[8] << " ";
+        cout <<  arr[9] << " ";
+        cout <<  arr[10] << " ";
+        cout  << arr[11] << endl;
+        cout <<  arr[12] << " ";
+        cout <<  arr[13] << " ";
+        cout <<  arr[14] << " ";
+        cout  << arr[15] << endl;
         cout << endl;
     }
 }
